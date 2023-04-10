@@ -19,6 +19,7 @@ class CheckOut(View):
         phone = request.POST.get('phone')
         customer = request.session.get('customer')
         cart = request.session.get('cart')
+        size = request.session.get('dropdown')
         products = Products.get_products_by_id(list(cart.keys()))
         print(address, phone, customer, cart, products)
 
@@ -29,6 +30,7 @@ class CheckOut(View):
                           price=product.price,
                           address=address,
                           phone=phone,
+                          size=size,
                           quantity=cart.get(str(product.id)))
             order.save()
             global global_qty
