@@ -11,7 +11,6 @@ class Products(models.Model):
                                    blank=True,
                                    null=True)
     image = models.ImageField(upload_to='uploads/products/')
-    size = models.IntegerField(default=0)
 
     @staticmethod
     def get_products_by_id(ids):
